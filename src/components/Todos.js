@@ -10,6 +10,7 @@ export default function Todos() {
         <Container>
             {Todos.map(todo =>
                 <Todo 
+                    key = {todo.id}
                     updateTodo = {updateTodo} 
                     toggler = {() => {toggleTodo(todo.id)}}
                     title = {todo.title}

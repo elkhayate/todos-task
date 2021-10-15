@@ -25,11 +25,10 @@ function App() {
 }
 const Main = styled.div`
   margin: auto;
-  margin-top: 100px;
   width: 80%;
-  height: 500px;
-  background-color: green;
+  height: 100%;
   border-radius: 10px;
+
 `;
 const Container = styled.div`
   background: #2c3440;

@@ -15,11 +15,13 @@ export default function Todo(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         props.updateTodo(props.id, todo);
+        setEditing(false)
     }
+
     return (
 
         <Container>
-            <div onClick={props.toggler}>{props.checked ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}</div>
+            <div style={{width : "10%", cursor : "pointer"}} onClick={props.toggler}>{props.checked ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}</div>
             {editing ? 
             <Form onSubmit={handleSubmit}>
             <input 
@@ -29,33 +31,47 @@ export default function Todo(props) {
             value = {todo || props.title} // GG me
             onChange = {handleChange}
             />
-            <button onClick = {() => setEditing(!editing)}>save</button>
+            <button>save</button>
         </Form> : 
                  <Task>{props.title}</Task>
         }
            
             
-            <div onClick={() => setEditing(!editing)}><EditIcon /></div>
-            <div onClick={props.deleteTodo}><DeleteIcon /></div>
+            <div style={{width : "10%", cursor : "pointer"}} onClick={() => setEditing(!editing)}><EditIcon /></div>
+            <div style={{width : "10%", cursor : "pointer"}} onClick={props.deleteTodo}><DeleteIcon /></div>
         </Container>
     )
 }
-const Number = styled.div`
-    width: 10%;
-`;
+
 const Task = styled.div`
     font-weight: normal;
-    font-size: 12px;
-    color: #FFFFFF;
-`;
-const Form = styled.form``;
-
-const Container = styled.div`
+    font-size: 16px;
+    line-height: 48px;
+    text-align: start;
     width: 95%;
-    margin: auto;
+`;
+const Form = styled.form`
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 48px;
+    text-align: start;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+`;
+const Input = styled.input`
+    width: 70%;
+    height: 20px;
+    border-radius: 5px;
+    border: none;
+`;
+const Container = styled.div`
     background-color: #273851;
     display: flex;
     justify-content: space-around;
-
+    align-items: center;
+    margin: 5px;
+    border-radius: 5px;
 `;
 
