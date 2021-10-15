@@ -18,45 +18,37 @@ export default function TodoContextProvider(props) {
         fetchData();
       },[])
 
-      const updateTodo = (id, title, completed, userId) => {
-        fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-            method: 'PUT',
-            body: JSON.stringify({
-              id: id,
-              title: title,
-              completed: completed,
-              userId : userId
-            }),
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-          })
-            .then((response) => response.json())
-            .then((json) => console.log(json));
+      const updateTodo = (id, newTitle) => {
+        const updatedTodo = Todos.map(todo => {
+            if(todo.id === id) {
+                return {...todo, title : newTitle}
+            }else {
+                return todo;
+            }
+            
+        })
+        setTodos(updatedTodo)
       }
-      const createTodo = ( title, completed, userId) => {
-        fetch('https://jsonplaceholder.typicode.com/todos', {
-            method: 'POST',
-            body: JSON.stringify({
-              title: title,
-              completed: completed,
-              userId: userId,
-            }),
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-          })
-            .then((response) => response.json())
-            .then((json) => console.log(json));
+      const toggleTodo = (id) => {
+        const updatedTodo = Todos.map(todo => {
+            if(todo.id === id) {
+                return {...todo, completed : !todo.completed}
+            }else {
+                return todo;
+            }
+            
+        })
+        setTodos(updatedTodo)
+      }
+      const createTodo = (task) => {
+        setTodos(old => [...old , task])
       }
       const deleteTodo = (id) => {
-        fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-            method: 'DELETE',
-          });
+        setTodos(Todos.filter(t => t.id !== id))
       }
     
     return(
-        <TodoContext.Provider value={{Todos, updateTodo, createTodo, deleteTodo}}>
+        <TodoContext.Provider value={{Todos, updateTodo, createTodo, deleteTodo, toggleTodo}}>
             {props.children}
         </TodoContext.Provider>
     )

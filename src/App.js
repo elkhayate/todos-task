@@ -1,6 +1,7 @@
-import './App.css';
+
 import React,{useState} from 'react'
 import styled from 'styled-components';
+import Todos from './components/Todos';
 
 
 
@@ -9,14 +10,14 @@ function App() {
 
   
   return (
-    <div>
+    <div style={{backgroundColor : "#222831", padding : "40px"}}>
       <Container>
         <Header>
-          <Todo onClick={() => {setShow(true)}}>Todo List</Todo>
-          <Create onClick={() => {setShow(false)}}> Create Todo</Create>
+          <Todo style={{color : show ? "#29A19C" : "white"}} onClick={() => {setShow(true)}}>TODOS</Todo>
+          <Create style={{color : show ? "white" : "#29A19C"}} onClick={() => {setShow(false)}}> CREATE</Create>
         </Header>
         <Main>
-          {show ? <p>hana</p> : <p>hani</p>}
+          {show ? <Todos /> : <p>hani</p>}
         </Main>
       </Container>
     </div>
@@ -27,11 +28,11 @@ const Main = styled.div`
   margin-top: 100px;
   width: 80%;
   height: 500px;
-  background-color: aliceblue;
+  background-color: green;
   border-radius: 10px;
 `;
 const Container = styled.div`
-  background: #1B2B42;
+  background: #2c3440;
   border-radius: 30px;
   width: 822px;
   height: 788px;
@@ -45,13 +46,16 @@ const Header = styled.div`
   justify-content: space-evenly;
   align-items: flex-end;
   height: 100px;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 33px;
+  letter-spacing: 0.03em;
 `;
 
 const Todo = styled.div`
   width: 30%;
   border-radius: 10px;
   height: 70%;
-  background: yellow;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -62,7 +66,6 @@ const Create = styled.div`
   width: 30%;
   border-radius: 10px;
   height: 70%;
-  background: yellow;
   cursor: pointer;
   display: flex;
   align-items: center;
