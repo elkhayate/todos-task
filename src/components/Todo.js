@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Todo(props) {
     const [todo, setTodo] = useState()
+    const [editing, setEditing] = useState(false);
     const handleChange = (e) => {
         setTodo(e.target.value)
     }
@@ -19,18 +20,22 @@ export default function Todo(props) {
 
         <Container>
             <div onClick={props.toggler}>{props.checked ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}</div>
-            <Task>{props.title}</Task>
+            {editing ? 
             <Form onSubmit={handleSubmit}>
-                <input 
-                name = "todo"
-                id = "todo"
-                type = "text"
-                value = {todo}
-                onChange = {handleChange}
-                />
-                <button>save</button>
-            </Form>
-            <div><EditIcon /></div>
+            <input 
+            name = "todo"
+            id = "todo"
+            type = "text"
+            value = {todo || props.title} // GG me
+            onChange = {handleChange}
+            />
+            <button onClick = {() => setEditing(!editing)}>save</button>
+        </Form> : 
+                 <Task>{props.title}</Task>
+        }
+           
+            
+            <div onClick={() => setEditing(!editing)}><EditIcon /></div>
             <div onClick={props.deleteTodo}><DeleteIcon /></div>
         </Container>
     )
