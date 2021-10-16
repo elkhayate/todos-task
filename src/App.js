@@ -6,15 +6,15 @@ import TodoForm from "./components/TodoForm";
 
 
 function App() {    
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   
   return (
     <div style={{backgroundColor : "#222831", padding : " 10px"}}>
       <Container>
         <Header>
-          <Todo style={{color : show ? "#29A19C" : "white"}} onClick={() => {setShow(true)}}>TODOS</Todo>
-          <Create style={{color : show ? "white" : "#29A19C"}} onClick={() => {setShow(false)}}> CREATE</Create>
+          <Todo style={{color : show ? "white" : "#556174", textDecoration : show ? "underline" : null}} onClick={() => {setShow(true)}}>TODO TASKS</Todo>
+          <Create style={{color : show ? "#556174" : "white", textDecoration : !show ? "underline" : null}} onClick={() => {setShow(false)}}> CREATE TASK</Create>
         </Header>
         <Main>
           {show ? <Todos /> : <TodoForm />}

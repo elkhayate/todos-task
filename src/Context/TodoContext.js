@@ -7,7 +7,7 @@ export const TodoContext = createContext();
 export default function TodoContextProvider(props) {
     const [Todos, setTodos] = useState([]);
     async function fetchData() {
-        for(let i = 1; i < 16; i++) {
+        for(let i = 1; i < 11; i++) {
             let response = await axios(`https://jsonplaceholder.typicode.com/todos/${i}`);
             let Data = await response.data;
             console.log(Data)
