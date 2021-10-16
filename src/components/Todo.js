@@ -7,7 +7,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Todo(props) {
-    const [todo, setTodo] = useState()
+    const [todo, setTodo] = useState(props.title)
     const [editing, setEditing] = useState(false);
     const handleChange = (e) => {
         setTodo(e.target.value)
@@ -28,7 +28,7 @@ export default function Todo(props) {
             name = "todo"
             id = "todo"
             type = "text"
-            value = {todo || props.title} // GG me
+            value = {todo} // GG me
             onChange = {handleChange}
             />
             <Button><SaveIcon /></Button>
