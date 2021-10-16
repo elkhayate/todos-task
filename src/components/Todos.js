@@ -4,7 +4,7 @@ import Todo from './Todo';
 import styled from "styled-components"
 
 export default function Todos() {
-    const {Todos, createTodo, updateTodo, deleteTodo, toggleTodo} = useContext(TodoContext);
+    const {Todos, updateTodo, deleteTodo, toggleTodo} = useContext(TodoContext);
 
     return (
         <Container>
@@ -24,8 +24,11 @@ export default function Todos() {
 }
 
 const Container = styled.div`
-    padding: 10px;
+    padding: 15px;
     display: block;
     justify-content: center;
     width: 100%;
+    overflow: scroll;
+    height: 80%;
+    background: #2c3440;
 `;

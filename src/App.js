@@ -1,7 +1,7 @@
-
 import React,{useState} from 'react'
 import styled from 'styled-components';
 import Todos from './components/Todos';
+import TodoForm from "./components/TodoForm";
 
 
 
@@ -10,14 +10,14 @@ function App() {
 
   
   return (
-    <div style={{backgroundColor : "#222831", padding : "40px"}}>
+    <div style={{backgroundColor : "#222831", padding : " 10px"}}>
       <Container>
         <Header>
           <Todo style={{color : show ? "#29A19C" : "white"}} onClick={() => {setShow(true)}}>TODOS</Todo>
           <Create style={{color : show ? "white" : "#29A19C"}} onClick={() => {setShow(false)}}> CREATE</Create>
         </Header>
         <Main>
-          {show ? <Todos /> : <p>hani</p>}
+          {show ? <Todos /> : <TodoForm />}
         </Main>
       </Container>
     </div>
@@ -25,7 +25,7 @@ function App() {
 }
 const Main = styled.div`
   margin: auto;
-  width: 80%;
+  width: 90%;
   height: 100%;
   border-radius: 10px;
 
@@ -37,7 +37,6 @@ const Container = styled.div`
   height: 788px;
   margin: auto;
   margin-top: 50px;
-
 `;
 
 const Header = styled.div`
